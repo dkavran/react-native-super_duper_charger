@@ -1,0 +1,7 @@
+- Application only works for Android and is still a work in progress
+- Best representation on an Nexus 5 phone/emulator
+- run:
+	- react-native run-android
+	- npm start
+- in emulator, manually set up your GPS location
+- note: new fetch executes every time a user changes the slider position
