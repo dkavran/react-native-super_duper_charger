@@ -12,7 +12,9 @@ import {
   View,
   Navigator,
   TouchableHighlight,
-  StatusBar
+  StatusBar,
+  Alert,
+  BackAndroid
 } from 'react-native';
 
 import WelcomeScreen from './source/WelcomeScreen';
@@ -22,7 +24,21 @@ import ResultInformation from './source/ResultInformation';
 
 var _navigator;
 
-export default class testProject extends Component {
+export default class SuperDuperCharge extends Component {
+
+  componentDidMount() {
+    BackAndroid.addEventListener('hardwareBackPress',this.onBackPress.bind(this));
+  }
+
+  onBackPress() {
+      if(_navigator.getCurrentRoutes().length == 1) {
+        BackAndroid.exitApp();
+        return false;
+      }
+      _navigator.pop();
+      return true;
+  }
+
   render() {
     return (
       <Navigator initialRoute={{id:'WelcomeScreen'}} renderScene={this.navigatorRenderScene.bind(this)}/>
@@ -35,15 +51,15 @@ export default class testProject extends Component {
 
     switch(route.id) {
       case 'WelcomeScreen':
-        return (<WelcomeScreen navigator={navigator} title="first" />);
+        return (<WelcomeScreen navigator={_navigator} title="first" />);
       case 'SearchScreen':
-        return (<SearchScreen navigator={navigator} title="second" />);
+        return (<SearchScreen navigator={_navigator} title="second" />);
       case 'MapList':
-        return (<MapList navigator={navigator} title="third" data={route.data} />);
+        return (<MapList navigator={_navigator} title="third" data={route.data} />);
       case 'ResultInformation':
-        return (<ResultInformation navigator={navigator} title="forth" data={route.data}/>);
+        return (<ResultInformation navigator={_navigator} title="forth" data={route.data}/>);
     }
   }
 };
 
-AppRegistry.registerComponent('testProject', () => testProject);
+AppRegistry.registerComponent('SuperDuperCharge', () => SuperDuperCharge);

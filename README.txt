@@ -1,8 +1,12 @@
 - Application only works for Android and is still a work in progress
 - Best representation on an Nexus 5 phone/emulator
-- run:
+- Run:
 	- npm install (to download node_modules)
+	- Install: https://github.com/oblador/react-native-vector-icons
+	- Install: https://github.com/airbnb/react-native-maps
+	- Install: https://github.com/ide/react-native-button
+	- Make sure Google services are available in AVDs
 	- react-native run-android
 	- npm start
-- in emulator, manually set up your GPS location
-- note: new fetch executes every time a user changes the slider position
+- In emulator, manually set up your GPS location and send the coordinates
+- Note: new fetch executes every time a user changes the slider position

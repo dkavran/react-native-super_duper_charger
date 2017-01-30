@@ -23,8 +23,10 @@ export class ResultInformation extends Component {
     var fastChargeAvailable = 'Not available';
     for(let i in this.props.data.Connections) {
       counterOfStations++;
-      if(this.props.data.Connections[i].Level.IsFastChargeCapable == true) {
-        fastChargeAvailable = 'Available';
+      if(this.props.data.Connections[i].Level != null) {
+        if(this.props.data.Connections[i].Level.IsFastChargeCapable == true) {
+          fastChargeAvailable = 'Available';
+        }
       }
     }
     this.state = {
@@ -56,7 +58,6 @@ export class ResultInformation extends Component {
   }
 
   render() {
-    if(this.state.usageCost != null) {
       return(
           <View style={styles.container}>
             <Text style={styles.title}>{this.state.title}</Text>
@@ -68,9 +69,20 @@ export class ResultInformation extends Component {
                 <Text style={styles.data}>Address</Text>
                 <Text style={styles.infoData}>{this.state.address}, {this.state.town}, {this.state.state}</Text>
                 <Text style={styles.data}>Usage costs</Text>
-                <Text style={styles.infoData}>{this.state.usageCost}</Text>
+                {this.state.usageCost != null &&
+                  <Text style={styles.infoData}>{this.state.usageCost}</Text>
+                }
+                {this.state.usageCost == null &&
+                  <Text style={styles.infoData}>Unknown</Text>
+                }
+
                 <Text style={styles.data}>Telephone</Text>
-                <Text style={styles.infoData}>{this.state.telephone}</Text>
+                {this.state.telephone != null &&
+                  <Text style={styles.infoData}>{this.state.telephone}</Text>
+                }
+                {this.state.telephone == null &&
+                  <Text style={styles.infoData}>Not available</Text>
+                }
               </View>
               <View style={styles.distanceInfo}>
                 <Text style={styles.distanceNumber}>{this.state.distance} km</Text>
@@ -86,38 +98,6 @@ export class ResultInformation extends Component {
             </ScrollView>
           </View>
       );
-    }
-    else {
-      return(
-          <View style={styles.container}>
-            <Text style={styles.title}>{this.state.title}</Text>
-            <ScrollView>
-            <Map currentRegion={this.state.mapPosition} marker={this.state.marker} title={this.state.title}
-                description={this.state.description} currentScreen={this.props.title}/>
-            <View style={styles.informationContainer}>
-              <View style={styles.information}>
-                <Text style={styles.data}>Address</Text>
-                <Text style={styles.infoData}>{this.state.address}, {this.state.town}, {this.state.state}</Text>
-                <Text style={styles.data}>Usage costs</Text>
-                <Text style={styles.infoData}>unknown</Text>
-                <Text style={styles.data}>Telephone</Text>
-                <Text style={styles.infoData}>{this.state.telephone}</Text>
-              </View>
-              <View style={styles.distanceInfo}>
-                <Text style={styles.distanceNumber}>{this.state.distance} km</Text>
-                <Text>Away</Text>
-              </View>
-            </View>
-            <View style={styles.additionalInformation}>
-              <Text style={styles.data}>Fast charge</Text>
-              <Text style={styles.infoData}>{this.state.fastCharge}</Text>
-              <Text style={styles.data}>Number of charging stations</Text>
-              <Text style={styles.infoData}>{this.state.numberOfChargingStations}</Text>
-            </View>
-            </ScrollView>
-          </View>
-      );
-    }
   }
 }
 

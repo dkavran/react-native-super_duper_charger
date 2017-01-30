@@ -12,7 +12,7 @@ import {
   View
 } from 'react-native';
 
-export default class testProject extends Component {
+export default class SuperDuperCharge extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('testProject', () => testProject);
+AppRegistry.registerComponent('SuperDuperCharge', () => SuperDuperCharge);

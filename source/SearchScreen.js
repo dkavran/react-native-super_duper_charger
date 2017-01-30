@@ -149,20 +149,15 @@ export class SearchScreen extends Component {
     })
   }
 
+  onBackPress() {
+    this.props.navigator.pop();
+  }
+
   moreResultsPress(){
     console.log("pressed button");
   }
 
   render() {
-    BackAndroid.addEventListener('hardwareBackPress', () => {
-        try {
-            this.props.navigator.pop();
-            return true;
-        }
-        catch (err) {
-            return true;
-        }
-    });
       return (
         <View
           style={{flex: 1,
@@ -198,7 +193,7 @@ export class SearchScreen extends Component {
           {this.state.results == 1 &&
             <Button
             containerStyle={{padding:10, height:45, overflow:'hidden', borderRadius:8, backgroundColor: 'white'}}
-              style={{fontSize: 15, color: '#026'}}
+              style={{fontSize: 16, color: '#026'}}
                 onPress={this.seeMoreClick.bind(this)}>
                 More results
               </Button>

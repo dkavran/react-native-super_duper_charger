@@ -13,14 +13,6 @@ import LogoWelcome from './LogoWelcome';
 
 export class WelcomeScreen extends Component {
 
-  componentDidMount() {
-    BackAndroid.addEventListener('hardwareBackPress',this.onBackPress.bind(this));
-  }
-
-  onBackPress() {
-    BackAndroid.exitApp();
-  }
-
   navSecond(){
     this.props.navigator.push({
       id: 'SearchScreen'
