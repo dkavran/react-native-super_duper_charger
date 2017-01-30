@@ -1,7 +1,7 @@
 - Application only works for Android and is still a work in progress
 - Best representation on an Nexus 5 phone/emulator
 - run:
-	- npm install (to download node_modules folder)
+	- npm install (to download node_modules)
 	- react-native run-android
 	- npm start
 - in emulator, manually set up your GPS location
