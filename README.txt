@@ -1,3 +1,6 @@
+# React-native-SuperDuperCharger
+A simple app to find a nearby charging station for an electric car
+
 - Application only works for Android and is still a work in progress
 - Best representation on an Nexus 5 phone/emulator
 - Run:
